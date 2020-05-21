@@ -27,8 +27,6 @@ test_requirements = [
 
 ]
 
-with open("README.md", "r") as fh:
-    readme = fh.read()
 
 def get_version(package):
     """
@@ -65,16 +63,18 @@ if sys.argv[-1] == 'publish':
     print("  git tag -a %(version)s -m 'version %(version)s'" % args)
     print("  git push --tags")
     sys.exit()
-
+with open('README.md', 'rb') as f:
+    readme = f.read().decode('utf-8')
 
 setup(
     name='tapioca-vindi',
     version=get_version(package),
     description='vindi API wrapper using tapioca',
     long_description=readme,
+    long_description_content_type="text/markdown",
     author=get_author(package),
     author_email=get_email(package),
-    url='https://github.com/lemesdaniel/tapioca-vindi',
+    url='https://github.com/lemesdaniel/vindi-tapioca',
     packages=[
         'tapioca_vindi',
     ],
